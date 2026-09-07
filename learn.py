@@ -1,15 +1,3 @@
-# Question: Add "Jake" to the phonebook with the phone number 938273443,
-# and remove Jill from the phonebook.
-
-# Code:
-
-phonebook = {
-    "John": 938477566,
-    "Jack": 100202340,
-    "Jill": 947662781
-    }
-phonebook.pop("Jill")  # Remove Jill from the phonebook
-phonebook["Jake"] = 938273443  # Add Jake to the phonebook with the phone number 938273443
-
-for item in phonebook.items():
-    print(item)
+import random
+for function in dir(random):
+    print(f"Function: {function} | Type: {type(getattr(random, function))} | Docstring: {getattr(random, function).__doc__}")
