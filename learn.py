@@ -1,37 +1,125 @@
-class Player:
-    def __init__(self, username, score, token):
-        self.username = username
-        self.score = score
-        self.token = token
+from __future__ import annotations
+class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next: Node | None = next
+        return 
 
-    def level_up(self):
-        self.token += 10
-        print(f"{self.username} leveled up!")
+class Linked_List:
+    def __init__(self, head=None) -> None:
+        self.head = head
+        return 
 
-player1 = Player("josh234", 100, 10)
-player2 = Player("narin40", 80, 30)
-player3 = Player("didt204", 100, 10)
+    def Add_To_Start(self, data) -> None:
+        new_node = Node(data)
 
-player3.level_up()
-player2.level_up()
+        new_node.next = self.head
+        self.head = new_node
+        return
 
-player_list = [player1, player2, player3]
+    def Print_List(self) -> None:
+        if self.head == None:
+            print("list is empty")
+            return
 
-def get_mvp_player(list) -> str:
-    username = ""
-    current = -1
-    current_tokens = 999
-    for player in list:
-        if player.score > current:
-            username = player.username
-            current = player.score
-            current_tokens = player.token
-        elif player.score == current:
-            if player.token < current_tokens:
-                username = player.username
-                current = player.score
-                current_tokens = player.token
-    return username
+        current = self.head
+        while current is not None:
+            print(current.data, end=" -> ")        
+            current = current.next
+        print("end")
+        return
 
-print(f"{get_mvp_player(player_list)} got the highest score!")
+    def Add_To_End(self, data) -> None:
+        new_node = Node(data)
+        current = self.head
+
+        if current is None:
+            self.head = new_node
+        else:
+            while current.next is not None:
+                current = current.next
+            current.next = new_node
+        return
+    
+    def Count_Nodes(self) -> int:
+        count = 0
+        current = self.head
+        if current is None:
+            return 0
+        else:
+            while current is not None:
+                count += 1
+                current = current.next
+            return count
+
+    def Search_Value(self, value):
+        current = self.head
+
+        if current is None:
+            return False
+        else:
+            while current is not None:
+                if current.data == value:
+                    return True
+                else:
+                    current = current.next
+            return False
+
+    def Reverse_List(self):
+        prev = None
+        current = self.head
+
+        if self.Count_Nodes() <= 1:
+            return
+
+        
+        while current is not None:
+                next_node = current.next
+                current.next = prev
+                prev = current
+                current = next_node
+        self.head = prev
+
+
+                
+
+                    
+        return
+
+    def Find_Middle(self):
+        current = self.head
+        fast = current
+        slow = current
+
+        if current is None:
+            return None
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+    
+            fast = fast.next.next
+
+        return slow.data
+
+    def Find_Loop(self):
+        current = self.head
+        fast, slow = current, current
+
+        while fast is not None and fast.next is not None and fast.next.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+            if fast is slow:
+                return True
+        return False
+
+list = Linked_List()
+list.Add_To_Start(3)
+list.Add_To_Start(2)
+list.Add_To_Start(1)
+list.Add_To_End(4)
+
+
+
+list.Print_List()
+print(list.Find_Loop())
 
