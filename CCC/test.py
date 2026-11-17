@@ -1,29 +1,21 @@
-#sliding window
-n = int(input())
+#CCC '21 J3 - Secret Instructions
+
 ans = []
-for i in range(n):
-    string = input()
-    items = []
-    counts = []
-    count = 0
-    if len(string) == 1:
-        counts.append(1)
-        items.append(string[0])
-    for j in range(len(string) - 1):
+while True:
+    raw = input()
+    if raw == '99999':
+        break
 
-        if string[j] == string[j + 1]:
-            count += 1
-        else:
-            items.append(string[j])
-            count += 1
-            counts.append(count)
-            count = 0
+    s = int(raw[0]) + int(raw[1])
+    if not s:
+        if 'left' in ans[-1]:
+            ans.append(f'left {raw[2:]}')
+        elif 'right' in ans[-1]:
+            ans.append(f'right {raw[2:]}')
+    elif s % 2 == 0:
+        ans.append(f'right {raw[2:]}')
+    else:
+        ans.append(f'left {raw[2:]}')
 
-        if j + 1 == len(string) - 1:
-            items.append(string[j + 1])
-            count += 1
-            counts.append(count)
-    ans.append([str(count)+item for count, item in zip(counts, items)])
-
-for batch in ans:
-    print(" ".join(batch))
+for res in ans:
+    print(res)
