@@ -1,21 +1,16 @@
-#CCC '21 J3 - Secret Instructions
+#Cool Zip Problem
 
-ans = []
-while True:
+n = int(input())
+a = []
+c = 0
+for i in range(n*2):
     raw = input()
-    if raw == '99999':
-        break
+    a.append(raw)
 
-    s = int(raw[0]) + int(raw[1])
-    if not s:
-        if 'left' in ans[-1]:
-            ans.append(f'left {raw[2:]}')
-        elif 'right' in ans[-1]:
-            ans.append(f'right {raw[2:]}')
-    elif s % 2 == 0:
-        ans.append(f'right {raw[2:]}')
-    else:
-        ans.append(f'left {raw[2:]}')
+stu, key = a[:n], a[n:]
 
-for res in ans:
-    print(res)
+for s, k in zip(stu, key):
+    if s == k:
+        c += 1
+
+print(c)
