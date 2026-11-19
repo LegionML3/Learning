@@ -1,16 +1,6 @@
-#Cool Zip Problem
-
-n = int(input())
-a = []
-c = 0
-for i in range(n*2):
-    raw = input()
-    a.append(raw)
-
-stu, key = a[:n], a[n:]
-
-for s, k in zip(stu, key):
-    if s == k:
-        c += 1
-
-print(c)
+s = int(input())
+m = int(input())
+l = int(input())
+score = s + m*2 + l*3
+print(score)
+print('happy' if s >=10 else 'sad')
