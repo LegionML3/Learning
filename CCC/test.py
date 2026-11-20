@@ -1,6 +1,14 @@
-s = int(input())
-m = int(input())
-l = int(input())
-score = s + m*2 + l*3
-print(score)
-print('happy' if s >=10 else 'sad')
+#J4 The Circular Train Route
+
+stations = int(input().split()[0])
+forwards = [int(f) for f in input().split()]
+visited = set()
+print(stations)
+print(forwards)
+
+current = 0
+for des in range(len(forwards)):
+    current += forwards[des]
+
+print(current)
+print(current % stations - 1)
