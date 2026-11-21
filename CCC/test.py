@@ -1,19 +1,12 @@
-#J4 The Circular Train Route
+#J3 Art
 
-stations = int(input().split()[0])
-forwards = [int(f) for f in input().split()]
-visited = set()
+xs = []
+ys = []
+for i in range(int(input())):
+    x, y = input().split(',')
+    xs.append(int(x))
+    ys.append(int(y))
 
-cur = 1
-visited.add(cur)
-for step in forwards:
-    
-    cur += step
-    while cur > stations:
-        cur -= stations
 
-    if not cur in visited:
-        visited.add(cur)
-
-print(cur)
-print(len(visited))
+print(f'{min(xs) - 1}, {min(ys) - 1}')
+print(f'{max(xs) + 1}, {max(ys) + 1}')
