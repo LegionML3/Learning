@@ -1,12 +1,10 @@
-#J3 Art
+#Problem J3: Candy Box Counts
 
-xs = []
-ys = []
-for i in range(int(input())):
-    x, y = input().split(',')
-    xs.append(int(x))
-    ys.append(int(y))
+n = int(input())
+table = input()
+target = input()
+l, r = map(int, input().split())
 
+sliced = table[l - 1:r]
 
-print(f'{min(xs) - 1}, {min(ys) - 1}')
-print(f'{max(xs) + 1}, {max(ys) + 1}')
+print(sliced.count(target))
