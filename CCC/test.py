@@ -1,32 +1,11 @@
-# J3 2A
-# import sys
+#J4 Frequent Flavors / Top Bucket
 
-# n = sys.stdin.readline()
-# old = sys.stdin.readline()
-# new = sys.stdin.readline()
+input()
+orders = list(map(int, input().split()))
 
-# count = 0
-# for o, n in zip(old, new):
-#     if o == 'C' and n == 'C':
-#         count += 1
+freq = [0] * 1001
 
-# print(count)
+for o in orders:
+    freq[o] += 1
 
-# J3 2B
-# import sys
-
-# n = sys.stdin.readline()
-# game = sys.stdin.readline()
-
-# streak = 0
-# score = 0
-# for char in game:
-#     if char == 'W':
-#         streak += 1
-#         score += 1
-#         if streak >= 3:
-#             score += 2
-#     else:
-#         streak = 0
-
-# print(score)
+print(max(freq))
