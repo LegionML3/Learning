@@ -1,11 +1,24 @@
-#J4 Frequent Flavors / Top Bucket
+#J3 Secret Cipher
 
 input()
-orders = list(map(int, input().split()))
+s = input()
 
-freq = [0] * 1001
+i = 1
+ans = []
+for char in s:
+    id = ord(char)
+    if i % 2 == 0:
+        if char == 'A':
+            ans.append('Z')
+        else:
+            ans.append(chr(id - 1))
 
-for o in orders:
-    freq[o] += 1
+    else:
+        if char == 'Z':
+            ans.append('A')
+        else:
+            ans.append(chr(id + 1))
 
-print(max(freq))
+    i += 1
+
+print(''.join(ans))
