@@ -1,24 +1,17 @@
-#J3 Secret Cipher
+#J3 Ball Swap / Cup Shuffle
 
-input()
-s = input()
+a = ['ball', 'empty', 'empty']
+n = int(input())
+for i in range(n):
+    ori, swap = map(int, input().split())
+    ori -= 1
+    swap -= 1
 
-i = 1
-ans = []
-for char in s:
-    id = ord(char)
-    if i % 2 == 0:
-        if char == 'A':
-            ans.append('Z')
-        else:
-            ans.append(chr(id - 1))
+    change = a[ori]
 
-    else:
-        if char == 'Z':
-            ans.append('A')
-        else:
-            ans.append(chr(id + 1))
+    a[ori] = a[swap]
+    a[swap] = change
+    
 
-    i += 1
 
-print(''.join(ans))
+print(a.index('ball') + 1)
